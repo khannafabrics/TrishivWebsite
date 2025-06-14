@@ -5,6 +5,42 @@
   <title>Trishiv Ethnic Villa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .order-form {
+      background-color: #f0f8ff;
+      padding: 30px 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .order-form h2 {
+      color: #ff4e4e;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    .order-form input, .order-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .order-form button {
+      background-color: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .order-form button:hover {
+      background-color: #1ebd5f;
+    }
+  </style>
 </head>
 <body>
 
@@ -36,6 +72,17 @@
     </div>
   </section>
 
+  <!-- ऑर्डर फॉर्म -->
+  <section class="order-form">
+    <h2>ऑर्डर करें</h2>
+    <form onsubmit="sendToWhatsApp(); return false;">
+      <input type="text" id="name" placeholder="आपका नाम" required>
+      <input type="text" id="phone" placeholder="फ़ोन नंबर" required>
+      <textarea id="address" placeholder="पूरा पता" required></textarea>
+      <button type="submit">📦 Order भेजें</button>
+    </form>
+  </section>
+
   <!-- संपर्क करें -->
   <section class="contact">
     <h2>संपर्क करें</h2>
@@ -49,6 +96,22 @@
   <footer>
     <p>©️ 2025 Trishiv Ethnic Villa | सभी अधिकार सुरक्षित</p>
   </footer>
+
+  <script>
+    function sendToWhatsApp() {
+      var name = document.getElementById("name").value;
+      var phone = document.getElementById("phone").value;
+      var address = document.getElementById("address").value;
+
+      var message = "*New Order Received*\n"
+                  + "👤 नाम: " + name + "\n"
+                  + "📱 फ़ोन: " + phone + "\n"
+                  + "🏠 पता: " + address;
+
+      var whatsappURL = "https://wa.me/919216044335?text=" + encodeURIComponent(message);
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
 
 </body>
 </html>
